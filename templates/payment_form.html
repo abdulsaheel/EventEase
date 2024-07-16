@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRAESTO - 2K24 Registration</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .hero-section {
+    position: relative; /* Ensure the container is relative for absolute positioning of pseudo-element */
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.ibb.co/CQkvWB1/IMG-8845-min.jpg') center/cover no-repeat;
+    filter: blur(3px); /* Adjust the blur radius as needed */
+    z-index: -1; /* Send the pseudo-element to the background */
+}
+
+.hero-section .container {
+    position: relative; /* Ensure content remains above the pseudo-element */
+}
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .testimonials-section {
+            background-color: #f0f0f0;
+            padding: 50px 0;
+        }
+        .testimonial {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .countdown-section {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+        }
+        .countdown-section h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .countdown {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .btn-pay {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-pay:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .testimonial-content {
+    max-width: 600px; /* Adjust as needed */
+    margin-bottom: 15px;
+}
+
+.testimonial-image {
+    width: 150px; /* Adjust image size */
+    height: 150px; /* Adjust image size */
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow effect */
+}
+
+.testimonial-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+@media (max-width: 767px) {
+        .hero-section {
+            display: none;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="display-4">Unlock Your Potential with PRAESTO - 2K24</h1>
+            <p class="lead">Join industry leaders and peers for a transformative experience in UI/UX, Web Dev, Data Science, and AI.</p>
+            <a href="#registration-form" class="btn btn-primary btn-lg">Secure Your Spot Now!</a>
+        </div>
+    </div>
+
+    <!-- Registration Form Section -->
+    <div id="registration-form" class="mt-5">
+
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">PRAESTO - 2K24 Registration</h2>
+                        {% if error_message %}
+                        <div id="error-message" class="alert alert-danger">
+                            {{ error_message }}
+                        </div>
+                        {% endif %}
+                        <form method="POST" action="/register">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile_number">Mobile Number</label>
+                                <input type="text" class="form-control" id="mobile_number" name="mobile_number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dept">Department</label>
+                                <input type="text" class="form-control" id="dept" name="dept" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="year">Year</label>
+                                <input type="text" class="form-control" id="year" name="year" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="section">Section</label>
+                                <input type="text" class="form-control" id="section" name="section" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="roll_no">Roll Number</label>
+                                <input type="text" class="form-control" id="roll_no" name="roll_no" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="workshop">Workshop</label>
+                                <input type="text" class="form-control" id="workshop" name="workshop" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                            <!-- Countdown Timer Section -->
+            <div class="countdown-section mt-4">
+                <h3>Register Before Time Runs Out!</h3>
+                <div id="countdown" class="countdown"></div>
+                <script>
+                    // Countdown timer script 
+                    var countdownDate = new Date('2024-06-24T00:00:00').getTime();
+                    var countdownTimer = setInterval(function() {
+                        var now = new Date().getTime();
+                        var distance = countdownDate - now;
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        document.getElementById('countdown').innerHTML = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's ';
+                        if (distance < 0) {
+                            clearInterval(countdownTimer);
+                            document.getElementById('countdown').innerHTML = 'EXPIRED';
+                        }
+                    }, 1000);
+                </script>
+            </div>
+                <!-- Testimonials Section -->
+                <div class="testimonials-section">
+                    <h3 class="text-center mb-4">Participant Testimonials</h3>
+                
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <blockquote class="blockquote">
+                                <p class="mb-0">"Attending PRAESTO - 2K24 was a game changer for my career. Highly recommended!"</p>
+                                <footer class="blockquote-footer">Keerthana,Intern UI/UX Designer @ Celume Studios</footer>
+                            </blockquote>
+                        </div>
+                        <div class="testimonial-image">
+                            <img src="https://i.ibb.co/WDp2mTJ/testimonial-1.jpg" class="rounded-circle" alt="John Doe">
+                        </div>
+                    </div>
+                
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <blockquote class="blockquote">
+                                <p class="mb-0">"The workshops were incredibly insightful. I walked away with practical skills I could apply immediately."</p>
+                                <footer class="blockquote-footer">Soumya, Desigin Lead - TEDx MREC</footer>
+                            </blockquote>
+                        </div>
+                        <div class="testimonial-image">
+                            <img src="https://i.ibb.co/LvtvyzC/testimonial-2-min.jpg" class="rounded-circle" alt="Jane Smith">
+                        </div>
+                    </div>
+                
+                </div>
+                
+
+
+
+        </div>
+    </div>
+</div>
+</div>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Form validation script -->
+<script>
+    function validateForm() {
+        // Example form validation (replace with your actual validation logic)
+        var mobileNumber = document.getElementById('mobile_number').value;
+        if (mobileNumber.length !== 10 || isNaN(mobileNumber)) {
+            alert('Please enter a valid 10-digit mobile number.');
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>

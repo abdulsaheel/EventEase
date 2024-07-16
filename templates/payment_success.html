@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - PRAESTO 2K24</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #343a40;
+        }
+        .container {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            border: none;
+            width: 80%;
+            max-width: 600px;
+        }
+        .card-header {
+            background-color: #28a745;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .card-body {
+            padding: 30px 40px;
+        }
+        .card-body p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .qr-code {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .qr-code img {
+            width: 150px;
+            height: 150px;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 16px;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Payment Successful
+            </div>
+            <div class="card-body">
+                <h4 class="text-center mb-4">Transaction Details</h4>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <p><strong>Name:</strong> {{ transaction.name }}</p>
+                        <p><strong>Mobile Number:</strong> {{ transaction.mobile_number }}</p>
+                        <p><strong>Email:</strong> {{ transaction.email }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Department:</strong> {{ transaction.dept }}</p>
+                        <p><strong>Year:</strong> {{ transaction.year }}</p>
+                        <p><strong>Section:</strong> {{ transaction.section }}</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <p><strong>Roll Number:</strong> {{ transaction.roll_no }}</p>
+                        <p><strong>Workshop:</strong> {{ transaction.workshop }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="qr-code">
+                            <h5>Scan this QR code at the event</h5>
+                            <img src="{{ qr_code_url }}" alt="QR Code">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
